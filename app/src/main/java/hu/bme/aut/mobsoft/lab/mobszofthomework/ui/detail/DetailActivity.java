@@ -1,7 +1,7 @@
-package hu.bme.aut.mobsoft.lab.mobszofthomework.ui.main;
+package hu.bme.aut.mobsoft.lab.mobszofthomework.ui.detail;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import javax.inject.Inject;
@@ -9,11 +9,10 @@ import javax.inject.Inject;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.MainApplication;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.R;
 
-
-public class MainActivity extends AppCompatActivity implements MainScreen {
+public class DetailActivity extends AppCompatActivity implements DetailScreen {
 
     @Inject
-    MainPresenter mainPresenter;
+    DetailPresenter detailPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +24,13 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     @Override
     protected void onStart() {
         super.onStart();
-        mainPresenter.attachScreen(this);
+        detailPresenter.attachScreen(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        mainPresenter.detachScreen();
+        detailPresenter.detachScreen();
     }
 
     @Override
