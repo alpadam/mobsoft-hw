@@ -37,4 +37,9 @@ public class AddActivity extends AppCompatActivity implements AddScreen {
     public void showMessage(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void navigateToList() {
+
+    }
 }

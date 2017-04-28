@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import hu.bme.aut.mobsoft.lab.mobszofthomework.MainApplication;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.R;
+import hu.bme.aut.mobsoft.lab.mobszofthomework.model.FuelRecord;
 
 public class StatisticsActivity extends AppCompatActivity implements StatisticsScreen {
     @Inject
@@ -35,5 +38,10 @@ public class StatisticsActivity extends AppCompatActivity implements StatisticsS
     @Override
     public void showMessage(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showStatistics(List<FuelRecord> records) {
+
     }
 }

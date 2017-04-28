@@ -13,6 +13,8 @@ public class FuelRecord {
     private boolean isFullTank;
     private int mileage;
 
+    public FuelRecord() {}
+
     public FuelRecord(Long id, double price, int amount, boolean isFulltank, int mileage) {
         this.id = id;
         this.price = price;

@@ -33,6 +33,14 @@ public class LoginActivity extends AppCompatActivity implements LoginScreen {
         loginPresenter.detachScreen();
     }
 
+    public void login() {
+
+    }
+
+    public void navigateToFuelRecordList() {
+
+    }
+
     @Override
     public void showMessage(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();

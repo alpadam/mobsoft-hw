@@ -1,11 +1,17 @@
 package hu.bme.aut.mobsoft.lab.mobszofthomework.interactor;
 
 
+
+
 import java.util.List;
 
 import javax.inject.Inject;
 
+import de.greenrobot.event.EventBus;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.MainApplication;
+import hu.bme.aut.mobsoft.lab.mobszofthomework.interactor.events.GetFuelRecordsEvent;
+import hu.bme.aut.mobsoft.lab.mobszofthomework.interactor.events.RemoveFuelRecordEvent;
+import hu.bme.aut.mobsoft.lab.mobszofthomework.interactor.events.SaveFuelRecordEvent;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.model.FuelRecord;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.repository.Repository;
 
@@ -14,16 +20,47 @@ public class FuelRecordInteractor {
     @Inject
     Repository repository;
 
+    @Inject
+    EventBus bus;
+
     public FuelRecordInteractor() {
         MainApplication.injector.inject(this);
     }
 
     public void getRecords() {
-        List<FuelRecord> records = repository.getFuelRecords();
+        GetFuelRecordsEvent event = new GetFuelRecordsEvent();
+        try {
+            List<FuelRecord> records = repository.getFuelRecords();
+            event.setRecords(records);
+            bus.post(event);
+        } catch (Exception e) {
+            event.setThrowable(e);
+            bus.post(event);
+        }
     }
 
     public void saveRecord(FuelRecord record) {
-        repository.saveRecord(record);
+        SaveFuelRecordEvent event = new SaveFuelRecordEvent();
+        event.setRecords(record);
+        try {
+            repository.saveRecord(record);
+            bus.post(event);
+        } catch (Exception e) {
+            event.setThrowable(e);
+            bus.post(event);
+        }
+    }
+
+    public void removeRecord(FuelRecord record) {
+        RemoveFuelRecordEvent event = new RemoveFuelRecordEvent();
+        event.setRecord(record);
+        try {
+            repository.removeRecord(record);
+            bus.post(event);
+        } catch (Exception e) {
+            event.setThrowable(e);
+            bus.post(event);
+        }
     }
 
     public void updateRecords(List<FuelRecord> records) {
@@ -32,9 +69,5 @@ public class FuelRecordInteractor {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void removeRecord(FuelRecord record) {
-        repository.removeRecord(record);
     }
 }

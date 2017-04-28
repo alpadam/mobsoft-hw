@@ -2,6 +2,10 @@ package hu.bme.aut.mobsoft.lab.mobszofthomework.ui;
 
 import javax.inject.Singleton;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import de.greenrobot.event.EventBus;
+
 import dagger.Module;
 import dagger.Provides;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.ui.add.AddPresenter;
@@ -61,5 +65,18 @@ public class UIModule {
     @Singleton
     public StatisticsPresenter provideStatisticsPresenter() {
         return new StatisticsPresenter();
+    }
+
+
+    @Provides
+    @Singleton
+    public EventBus provideEventBus() {
+        return EventBus.getDefault();
+    }
+
+    @Provides
+    @Singleton
+    public Executor provideExecutor() {
+        return Executors.newFixedThreadPool(1);
     }
 }
