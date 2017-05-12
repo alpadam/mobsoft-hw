@@ -9,41 +9,50 @@ import org.robolectric.annotation.Config;
 
 import java.util.List;
 
+import hu.bme.aut.mobsoft.lab.mobszofthomework.ui.listpage.ListPageScreen;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.ui.main.MainPresenter;
-import hu.bme.aut.mobsoft.lab.mobszofthomework.ui.main.MainScreen;
+import hu.bme.aut.mobsoft.lab.mobszofthomework.ui.listpage.ListPagePresenter;
+import static org.junit.Assert.assertEquals;
 
 import static hu.bme.aut.mobsoft.lab.mobszofthomework.TestHelper.setTestInjector;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 @RunWith(RobolectricDaggerTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
 public class FuelRecordTest {
 
-    private MainPresenter mianPresenter;
+    private MainPresenter mainPresenter;
+    private ListPagePresenter listPagePresenter;
+
+
 
     @Before
     public void setup() throws Exception {
-        setTestInjector();
-        mianPresenter = new MainPresenter();
+        /*setTestInjector();
+        mainPresenter = new MainPresenter();
+        listPagePresenter = new ListPagePresenter();*/
     }
 
     @Test
-    public void testTodo() {
-       /* MainScreen mainScreen = mock(MainScreen.class);
-        mianPresenter.attachScreen(mainScreen);
-        mianPresenter.getFavourites();
+    public void testListPage() {
 
-        ArgumentCaptor<String> todosCaptor = ArgumentCaptor.forClass(String.class);
-        verify(mainScreen, times(2)).showMessage(todosCaptor.capture());
+        /*ListPageScreen listPageScreen = mock(ListPageScreen.class);
+        listPagePresenter.attachScreen(listPageScreen);
+        listPagePresenter.getFuelRecords();
 
-        List<String> capturedTodos = todosCaptor.getAllValues();
-        assertEquals("todo one", capturedTodos.get(0));
-        assertEquals("todo two", capturedTodos.get(1));*/
+        ArgumentCaptor<String> fuelRecordsCaptor = ArgumentCaptor.forClass(String.class);
+        verify(listPageScreen, times(2)).showMessage(fuelRecordsCaptor.capture());
+
+        List<String> capturedFuelRecords = fuelRecordsCaptor.getAllValues();
+        assertEquals("todo one", capturedFuelRecords.get(0));
+        assertEquals("todo two", capturedFuelRecords.get(1));*/
     }
 
     @After
     public void tearDown() {
-        mianPresenter.detachScreen();
+        /*mainPresenter.detachScreen();*/
     }
 
 }
