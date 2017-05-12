@@ -2,6 +2,8 @@ package hu.bme.aut.mobsoft.lab.mobszofthomework.ui.login;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import javax.inject.Inject;
@@ -19,6 +21,16 @@ public class LoginActivity extends AppCompatActivity implements LoginScreen {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MainApplication.injector.inject(this);
+
+        Button btn = (Button) findViewById(R.id.loginButton);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 // TODO: login
+            }
+        });
+
     }
 
     @Override
@@ -32,6 +44,8 @@ public class LoginActivity extends AppCompatActivity implements LoginScreen {
         super.onStop();
         loginPresenter.detachScreen();
     }
+
+
 
     public void login() {
 

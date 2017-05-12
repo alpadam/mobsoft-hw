@@ -9,10 +9,12 @@ import org.robolectric.annotation.Config;
 
 import java.util.List;
 
+import hu.bme.aut.mobsoft.lab.mobszofthomework.model.FuelRecord;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.ui.listpage.ListPageScreen;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.ui.main.MainPresenter;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.ui.listpage.ListPagePresenter;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import static hu.bme.aut.mobsoft.lab.mobszofthomework.TestHelper.setTestInjector;
 import static org.mockito.Mockito.mock;
@@ -30,29 +32,28 @@ public class FuelRecordTest {
 
     @Before
     public void setup() throws Exception {
-        /*setTestInjector();
+        setTestInjector();
         mainPresenter = new MainPresenter();
-        listPagePresenter = new ListPagePresenter();*/
+        listPagePresenter = new ListPagePresenter();
     }
 
     @Test
     public void testListPage() {
 
-        /*ListPageScreen listPageScreen = mock(ListPageScreen.class);
+        ListPageScreen listPageScreen = mock(ListPageScreen.class);
         listPagePresenter.attachScreen(listPageScreen);
         listPagePresenter.getFuelRecords();
 
-        ArgumentCaptor<String> fuelRecordsCaptor = ArgumentCaptor.forClass(String.class);
-        verify(listPageScreen, times(2)).showMessage(fuelRecordsCaptor.capture());
+        ArgumentCaptor<List> fuelRecordsCaptor = ArgumentCaptor.forClass(List.class);
+        verify(listPageScreen).showRecordList(fuelRecordsCaptor.capture());
 
-        List<String> capturedFuelRecords = fuelRecordsCaptor.getAllValues();
-        assertEquals("todo one", capturedFuelRecords.get(0));
-        assertEquals("todo two", capturedFuelRecords.get(1));*/
+        List<FuelRecord> capturedFuelRecords = fuelRecordsCaptor.getValue();
+        assertTrue(fuelRecordsCaptor.getValue().size() > 0);
     }
 
     @After
     public void tearDown() {
-        /*mainPresenter.detachScreen();*/
+        mainPresenter.detachScreen();
     }
 
 }
