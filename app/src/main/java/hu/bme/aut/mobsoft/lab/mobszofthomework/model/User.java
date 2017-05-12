@@ -60,14 +60,14 @@ public class User {
             return false;
         }
         User user = (User) o;
-        return Objects.equals(id, user.id) &&
-                Objects.equals(username, user.username) &&
-                Objects.equals(password, user.password);
+        return id.equals(user.id) &&
+                username.equals(user.username) &&
+                password.equals(user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password);
+        return id.hashCode();
     }
 
     @Override

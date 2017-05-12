@@ -15,6 +15,7 @@ import hu.bme.aut.mobsoft.lab.mobszofthomework.ui.login.LoginPresenter;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.ui.main.MainPresenter;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.ui.statistics.StatisticsPresenter;
 
+
 import android.content.Context;
 
 @Module

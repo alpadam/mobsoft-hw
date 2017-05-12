@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.interactor.FuelRecordInteractor;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.interactor.InteractorModule;
+import hu.bme.aut.mobsoft.lab.mobszofthomework.network.NetworkModule;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.repository.RepositoryModule;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.ui.UIModule;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.ui.add.AddActivity;
@@ -21,7 +22,7 @@ import hu.bme.aut.mobsoft.lab.mobszofthomework.ui.statistics.StatisticsActivity;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.ui.statistics.StatisticsPresenter;
 
 @Singleton
-@Component(modules = {UIModule.class, RepositoryModule.class, InteractorModule.class})
+@Component(modules = {UIModule.class, RepositoryModule.class, InteractorModule.class, NetworkModule.class})
 public interface MobSoftApplicationComponent {
     void inject(MainActivity mainActivity);
     void inject(AddActivity addActivity);
