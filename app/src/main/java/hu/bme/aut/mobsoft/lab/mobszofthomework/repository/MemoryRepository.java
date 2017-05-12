@@ -17,8 +17,8 @@ public class MemoryRepository implements Repository {
 
     @Override
     public void open(Context context) {
-        FuelRecord record1 = new FuelRecord(1L, 356.9, 7688, true, 122345);
-        FuelRecord record2 = new FuelRecord(3L, 358.9, 6488, false, 122345);
+        FuelRecord record1 = new FuelRecord(1L, 356.9, 7688, true, 122345, 1L);
+        FuelRecord record2 = new FuelRecord(3L, 358.9, 6488, false, 122345, 1L);
 
         records = new ArrayList<>();
         records.add(record1);

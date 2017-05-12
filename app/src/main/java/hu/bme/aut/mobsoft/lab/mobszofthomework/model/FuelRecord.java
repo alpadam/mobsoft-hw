@@ -1,26 +1,39 @@
 package hu.bme.aut.mobsoft.lab.mobszofthomework.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.orm.dsl.Table;
-
-import static android.R.attr.name;
 
 @Table
 public class FuelRecord {
 
+    @SerializedName("id")
     private Long id = null;
+
+    @SerializedName("amount")
+    private Double amount = null;
+
+    @SerializedName("isFullTank")
+    private Boolean isFullTank = null;
+
+    @SerializedName("mileage")
+    private Integer mileage = null;
+
+    @SerializedName("userid")
+    private Long userid = null;
+
     private double price;
-    private int amount;
-    private boolean isFullTank;
-    private int mileage;
+
+
 
     public FuelRecord() {}
 
-    public FuelRecord(Long id, double price, int amount, boolean isFulltank, int mileage) {
+    public FuelRecord(Long id, double price, double amount, boolean isFulltank, int mileage, Long userid) {
         this.id = id;
         this.price = price;
         this.amount = amount;
         this.isFullTank = isFulltank;
         this.mileage = mileage;
+        this.userid = userid;
     }
 
     public Long getId() {
@@ -39,11 +52,11 @@ public class FuelRecord {
         this.price = price;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
