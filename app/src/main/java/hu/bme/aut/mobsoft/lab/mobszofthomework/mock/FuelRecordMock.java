@@ -21,18 +21,26 @@ public class FuelRecordMock {
         int responseCode = 0;
         Headers headers = request.headers();
 
-        /*if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "Todos") && request.method().equals("POST")) {
+        if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "records") && request.method().equals("POST")) {
             responseString = "";
             responseCode = 200;
-        }else if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "Todos") && request.method().equals("Get")) {
+        } else if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "records") && request.method().equals("GET")) {
             MemoryRepository memoryRepository = new MemoryRepository();
             memoryRepository.open(null);
-            responseString = GsonHelper.getGson().toJson(memoryRepository.getFavourites());
+            responseString = GsonHelper.getGson().toJson(memoryRepository.getFuelRecords());
             responseCode = 200;
-        } else {
+        } else if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "records/1") && request.method().equals("GET")) {
+            MemoryRepository memoryRepository = new MemoryRepository();
+            memoryRepository.open(null);
+            responseString = GsonHelper.getGson().toJson(memoryRepository.getFuelRecords().get(0));
+            responseCode = 200;
+        } else if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "records") && request.method().equals("DELETE")) {
+            responseString = "";
+            responseCode = 200;
+        }  else {
             responseString = "ERROR";
             responseCode = 503;
-        }*/
+        }
 
         return makeResponse(request, headers, responseCode, responseString);
     }

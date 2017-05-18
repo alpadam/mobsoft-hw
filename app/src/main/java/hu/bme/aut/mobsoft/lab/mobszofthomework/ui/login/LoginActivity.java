@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import javax.inject.Inject;
@@ -16,21 +17,27 @@ public class LoginActivity extends AppCompatActivity implements LoginScreen {
     @Inject
     LoginPresenter loginPresenter;
 
+    private EditText username;
+    private EditText pw;
+    private Button loginBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        username = (EditText) findViewById(R.id.editUsername);
+        pw = (EditText) findViewById(R.id.editPassword);
+        loginBtn = (Button) findViewById(R.id.loginButton);
+
         MainApplication.injector.inject(this);
 
-        Button btn = (Button) findViewById(R.id.loginButton);
-
-        btn.setOnClickListener(new View.OnClickListener() {
+        loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 // TODO: login
+            loginPresenter.login(username.getText().toString(), pw.getText().toString());
             }
         });
-
     }
 
     @Override

@@ -25,21 +25,16 @@ import static org.mockito.internal.verification.VerificationModeFactory.times;
 @Config(constants = BuildConfig.class, sdk = 21)
 public class FuelRecordTest {
 
-    private MainPresenter mainPresenter;
     private ListPagePresenter listPagePresenter;
-
-
 
     @Before
     public void setup() throws Exception {
         setTestInjector();
-        mainPresenter = new MainPresenter();
         listPagePresenter = new ListPagePresenter();
     }
 
     @Test
     public void testListPage() {
-
         ListPageScreen listPageScreen = mock(ListPageScreen.class);
         listPagePresenter.attachScreen(listPageScreen);
         listPagePresenter.getFuelRecords();
@@ -53,7 +48,6 @@ public class FuelRecordTest {
 
     @After
     public void tearDown() {
-        mainPresenter.detachScreen();
+        listPagePresenter.detachScreen();
     }
-
 }

@@ -10,10 +10,13 @@ import javax.inject.Inject;
 import de.greenrobot.event.EventBus;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.MainApplication;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.interactor.events.GetFuelRecordsEvent;
+import hu.bme.aut.mobsoft.lab.mobszofthomework.interactor.events.LoginEvent;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.interactor.events.RemoveFuelRecordEvent;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.interactor.events.SaveFuelRecordEvent;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.model.FuelRecord;
 import hu.bme.aut.mobsoft.lab.mobszofthomework.repository.Repository;
+
+import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class FuelRecordInteractor {
 
@@ -70,4 +73,21 @@ public class FuelRecordInteractor {
             e.printStackTrace();
         }
     }
+
+    public void login(String name, String password) {
+        LoginEvent event = new LoginEvent();
+        try {
+
+            if (isNullOrEmpty(name) && isNullOrEmpty(password)) {
+                event.setSuccess(false);
+            }
+            event.setSuccess(true);
+            bus.post(event);
+
+        } catch (Exception e) {
+            event.setThrowable(e);
+            bus.post(event);
+        }
+    }
+
 }
