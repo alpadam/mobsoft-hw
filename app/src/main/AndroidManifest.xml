@@ -15,6 +15,13 @@
         android:name="DOMAIN_PACKAGE_NAME"
         android:value="hu.bme.aut.mobsoft.mobsoftlab.model"/>
 
+    <meta-data
+        android:name="io.fabric.ApiKey"
+        android:value="b7d4222b20e5a7fcce05dbd24b9267f14274d78e" />
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -29,6 +36,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="7ff2c4e8f0296e9539d20a58d5ccdf10e8fb683c" />
     </application>
 
 </manifest>
